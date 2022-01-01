@@ -13,4 +13,12 @@ function rundomHello() {
     return Hello[index]
 }
 
+function isHere (name, arr) {
+    if(arr.indexOf(name) === -1){
+        console.log("push")
+        arr.push(name)
+    }
+}
+
 module.exports.rundomHello = rundomHello;
+module.exports.isHere = isHere;

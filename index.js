@@ -35,7 +35,6 @@ bot.command('pidorDnya', (ctx)=>{
     const index = Math.floor(Math.random() * arrNames.length);
     if(count >= 10) {
         ctx.reply(`И почетное звание "Пидор Дня" присуждается тебе, ${arrNames[index]}!`)
-        count = 0;
     }    
 })
 

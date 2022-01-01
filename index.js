@@ -4,7 +4,7 @@ const PD_STIKER = 'CAACAgIAAxkBAAIBm2HQnqxsVWR1FfjZrMV_ok4kKB-TAAL2AAMIBwIAAao2r
 const LOL_STIKER = 'CAACAgIAAxkBAAIB3mHQqCcxD2vXmU50OgGIWCs-LBCRAAL6AAMIBwIAASxp8LbwtSi9IwQ';
 const HELLO = /(Привет|здарова|здоров|здаров|hi|hello|Костя)/ig;
 const TY = /(Спасибо бот|спасибо робот|Спасибо)/ig
-const LOL = /(фхфх|ахахах|ахах|хехехе|хехе|ахаха|пхпхп|пхп|\)|\)\)|\)\)\)|\)\)\)\)|хехе)/ig
+const LOL = /(фхфх|ахахах|ахах|хехехе|хехе|ахаха|пхпхп|пхп|\)|хехе)/ig
 const { Telegraf } = require('telegraf')
 const { rundomHello, isHere } = require('./testlib')
 
@@ -33,21 +33,23 @@ bot.hears(LOL, async (ctx) => {
 
 bot.command('pidorDnya', (ctx)=>{
     const index = Math.floor(Math.random() * arrNames.length);
-    if(count >= 10) {
+    if(count >= 15) {
         ctx.reply(`И почетное звание "Пидор Дня" присуждается тебе, ${arrNames[index]}!`)
+    }else{
+        ctx.reply(`Извини, в своих ответах я ограничен`)
     }    
 })
 
 bot.on('message',async (ctx)=>{
     isHere(ctx.message.from.first_name, arrNames)
     count++;
-    if(count === 10||count === 15) {
+    if(count === 15||count === 20) {
         await ctx.replyWithSticker(PD_STIKER)
         ctx.reply(`Пришло время найти пидораса. Клацай по команде и узнай кто тут пидор! \/pidorDnya`)
     }else{
         
     }
-    if(count > 15) {
+    if(count > 20) {
         count = 0;
     }
 })
